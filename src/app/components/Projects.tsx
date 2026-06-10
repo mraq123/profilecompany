@@ -2,52 +2,96 @@ import { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { ExternalLink, Calendar, MapPin } from "lucide-react";
 
-const PROJ_IMG_1 = "https://images.unsplash.com/photo-1606185540834-d6e7483ee1a4?w=700&h=450&fit=crop&auto=format";
+const PROJ_IMG_1 = "/image/shanaya3.png";
 const PROJ_IMG_2 = "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?w=700&h=450&fit=crop&auto=format";
 const PROJ_IMG_3 = "https://images.unsplash.com/photo-1606964212858-c215029db704?w=700&h=450&fit=crop&auto=format";
 const PROJ_IMG_4 = "https://images.unsplash.com/photo-1724597500306-a4cbb7d1324e?w=700&h=450&fit=crop&auto=format";
 
 const projects = [
   {
-    title: "Pengiriman Baja Konstruksi Jembatan Batam–Bintan",
-    category: "Kargo Khusus",
-    client: "PT Waskita Karya (Persero) Tbk",
-    volume: "18.500 ton baja struktural",
-    period: "Mar 2023 – Sep 2023",
-    location: "Batam, Kepulauan Riau",
+    title: "Fasilitas KMP. Shanaya",
+    category: "KMP. Shanaya",
+    // client: "PT Waskita Karya (Persero) Tbk",
+    // volume: "18.500 ton baja struktural",
+    // period: "Mar 2023 – Sep 2023",
+    // location: "Batam, Kepulauan Riau",
     image: PROJ_IMG_1,
     highlight: true,
   },
+
   {
-    title: "Distribusi Logistik Proyek PLTU Sulawesi Selatan",
-    category: "Logistik Industri",
-    client: "PLN Nusantara Power",
-    volume: "42.000 ton peralatan & material",
-    period: "Jan 2022 – Okt 2023",
-    location: "Jeneponto, Sulawesi Selatan",
-    image: PROJ_IMG_2,
-    highlight: false,
+    title: "Fasilitas KMP. Shanaya",
+    category: "KMP. Shanaya",
+    // client: "PT Waskita Karya (Persero) Tbk",
+    // volume: "18.500 ton baja struktural",
+    // period: "Mar 2023 – Sep 2023",
+    // location: "Batam, Kepulauan Riau",
+    image: PROJ_IMG_1,
+    highlight: true,
   },
+
   {
-    title: "Charter Armada Ekspor CPO Kalimantan Timur",
-    category: "Charter & Bulk",
-    client: "PT Astra Agro Lestari Tbk",
-    volume: "7 voyage charter, 280.000 ton",
-    period: "Feb 2023 – Feb 2024",
-    location: "Samarinda, Kalimantan Timur",
-    image: PROJ_IMG_3,
-    highlight: false,
+    title: "Fasilitas KMP. Shanaya",
+    category: "KMP. Shanaya",
+    // client: "PT Waskita Karya (Persero) Tbk",
+    // volume: "18.500 ton baja struktural",
+    // period: "Mar 2023 – Sep 2023",
+    // location: "Batam, Kepulauan Riau",
+    image: PROJ_IMG_1,
+    highlight: true,
   },
+
   {
-    title: "Pengiriman Peralatan Migas Offshore Natuna",
-    category: "Oil & Gas Support",
-    client: "PT Pertamina Hulu Energi",
-    volume: "12 rig equipment package",
-    period: "Apr 2024 – Des 2024",
-    location: "Kepulauan Natuna",
-    image: PROJ_IMG_4,
-    highlight: false,
+    title: "Fasilitas KMP. Shanaya",
+    category: "KMP. Shanaya",
+    // client: "PT Waskita Karya (Persero) Tbk",
+    // volume: "18.500 ton baja struktural",
+    // period: "Mar 2023 – Sep 2023",
+    // location: "Batam, Kepulauan Riau",
+    image: PROJ_IMG_1,
+    highlight: true,
   },
+
+  {
+    title: "Fasilitas KMP. Shanaya",
+    category: "KMP. Shanaya",
+    // client: "PT Waskita Karya (Persero) Tbk",
+    // volume: "18.500 ton baja struktural",
+    // period: "Mar 2023 – Sep 2023",
+    // location: "Batam, Kepulauan Riau",
+    image: PROJ_IMG_1,
+    highlight: true,
+  },
+  // {
+  //   title: "Distribusi Logistik Proyek PLTU Sulawesi Selatan",
+  //   category: "Logistik Industri",
+  //   client: "PLN Nusantara Power",
+  //   volume: "42.000 ton peralatan & material",
+  //   period: "Jan 2022 – Okt 2023",
+  //   location: "Jeneponto, Sulawesi Selatan",
+  //   image: PROJ_IMG_2,
+  //   highlight: true,
+  // },
+  // {
+  //   title: "Charter Armada Ekspor CPO Kalimantan Timur",
+  //   category: "Charter & Bulk",
+  //   client: "PT Astra Agro Lestari Tbk",
+  //   volume: "7 voyage charter, 280.000 ton",
+  //   period: "Feb 2023 – Feb 2024",
+  //   location: "Samarinda, Kalimantan Timur",
+  //   image: PROJ_IMG_3,
+  //   highlight: false,
+  // },
+  // {
+  //   title: "Pengiriman Peralatan Migas Offshore Natuna",
+  //   category: "Oil & Gas Support",
+  //   client: "PT Pertamina Hulu Energi",
+  //   volume: "12 rig equipment package",
+  //   period: "Apr 2024 – Des 2024",
+  //   location: "Kepulauan Natuna",
+  //   image: PROJ_IMG_4,
+  //   highlight: false,
+  // },
 ];
 
 const stats = [
@@ -62,7 +106,7 @@ export function Projects() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="projects" className="py-28 bg-[#0B1829]" ref={ref}>
+    <section id="facilities" className="py-28 bg-[#0B1829]" ref={ref}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -74,7 +118,7 @@ export function Projects() {
           <div className="flex items-center gap-3 mb-5">
             <div className="h-px w-10 bg-[#D4A843]" />
             <span className="text-[#D4A843] text-xs tracking-widest uppercase font-medium">
-              Proyek & Portofolio
+              Kapal & Fasilitas
             </span>
           </div>
           <div className="grid lg:grid-cols-2 gap-8 items-end">
@@ -87,7 +131,7 @@ export function Projects() {
         </motion.div>
 
         {/* Stats bar */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -104,7 +148,7 @@ export function Projects() {
               <div className="text-white/40 text-sm">{s.label}</div>
             </div>
           ))}
-        </motion.div>
+        </motion.div> */}
 
         {/* Project cards */}
         <div className="grid md:grid-cols-2 gap-6">
@@ -114,13 +158,12 @@ export function Projects() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className={`group relative rounded-2xl overflow-hidden bg-[#112240] border transition-all duration-300 hover:border-[#1E6FBF]/50 ${
-                proj.highlight ? "border-[#D4A843]/30" : "border-white/5"
-              }`}
+              className={`group relative rounded-2xl overflow-hidden bg-[#112240] border transition-all duration-300 hover:border-[#1E6FBF]/50 ${proj.highlight ? "border-[#D4A843]/30" : "border-white/5"
+                }`}
             >
               {proj.highlight && (
                 <div className="absolute top-4 left-4 z-10 px-3 py-1 bg-[#D4A843] text-[#0B1829] text-xs font-bold rounded-full">
-                  Featured
+                  Beroperasi
                 </div>
               )}
               <div className="relative h-52 bg-[#1A3A5C] overflow-hidden">
@@ -141,9 +184,9 @@ export function Projects() {
                 <h3 className="text-white mb-3 group-hover:text-[#D4A843] transition-colors" style={{ fontSize: "1rem" }}>
                   {proj.title}
                 </h3>
-                <p className="text-[#1E6FBF] text-sm font-medium mb-4">{proj.client}</p>
+                {/* <p className="text-[#1E6FBF] text-sm font-medium mb-4">{proj.client}</p> */}
 
-                <div className="space-y-2 mb-4">
+                {/* <div className="space-y-2 mb-4">
                   <div className="flex items-center gap-2 text-white/40 text-xs">
                     <Package className="w-3.5 h-3.5" />
                     {proj.volume}
@@ -156,7 +199,7 @@ export function Projects() {
                     <MapPin className="w-3.5 h-3.5" />
                     {proj.location}
                   </div>
-                </div>
+                </div> */}
 
                 <div className="flex items-center gap-1 text-white/20 group-hover:text-[#1E6FBF] text-sm transition-colors">
                   <span>Lihat detail</span>

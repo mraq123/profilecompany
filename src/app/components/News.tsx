@@ -51,7 +51,7 @@ export function News() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="news" className="py-28 bg-[#0D1E35]" ref={ref}>
+    <section id="login" className="py-28 bg-[#0D1E35]" ref={ref}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <motion.div

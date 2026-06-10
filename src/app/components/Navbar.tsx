@@ -8,9 +8,13 @@ const navLinks = [
   { label: "Layanan", href: "#services" },
   { label: "Armada", href: "#fleet" },
   { label: "Rute", href: "#routes" },
-  { label: "Proyek", href: "#projects" },
-  { label: "Berita", href: "#news" },
+  { label: "Kapal & Fasilitas", href: "#facilities" },
+  // link ke jemla
+  { label: "Login", href: "" },
+  { label: "Jadwal", href: "" },
+  // end
   { label: "Kontak", href: "#contact" },
+
 ];
 
 export function Navbar() {

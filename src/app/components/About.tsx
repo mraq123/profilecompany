@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { motion, useInView } from "motion/react";
-import { Eye, Target, Award, CheckCircle } from "lucide-react";
+import { Eye, Target, Award, CheckCircle, Download, ArrowRight } from "lucide-react";
 
 const ABOUT_IMAGE =
   "/image/shanaya.png";
@@ -27,15 +27,15 @@ const values = [
 ]
 
 const certs = [
-  "ISM Code (International Safety Management)",
-  "ISO 9001:2015 Quality Management",
-  "ISPS Code Compliance",
-  "MLC 2006 (Maritime Labour Convention)",
-  "OHSAS 18001 Health & Safety",
-  "BKI Class Certification",
+  { id: 1, title: "Standar Keselamatan", file: "/image/keselamatan.png" }
+  // "ISO 9001:2015 Quality Management",
+  // "ISPS Code Compliance",
+  // "MLC 2006 (Maritime Labour Convention)",
+  // "OHSAS 18001 Health & Safety",
+  // "BKI Class Certification",
 ];
 
-const tabs = ["Sejarah", "Visi & Misi", "Motto", "Sertifikasi"] as const;
+const tabs = ["Sejarah", "Visi & Misi", "Motto", "Standar Keselamatan"] as const;
 type Tab = (typeof tabs)[number];
 
 export function About() {
@@ -289,24 +289,136 @@ export function About() {
               </div>
             )}
 
-            {activeTab === "Sertifikasi" && (
+            {/* {activeTab === "Standar Keselamatan" && (
               <div className="space-y-3">
-                {/* <p className="text-white/50 text-sm mb-6">
+                <p className="text-white/50 text-sm mb-6">
                   Samudera Nusantara Line telah memperoleh berbagai sertifikasi
                   internasional yang menjamin standar keselamatan dan kualitas
                   operasional tertinggi.
-                </p> */}
+                </p>
                 {certs.map((cert, i) => (
                   <motion.div
-                    key={cert}
+                    key={cert.id}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.07 }}
-                    className="flex items-center gap-3 p-3 bg-[#112240] rounded-lg border border-white/5"
+                    className="flex items-center gap-3 p-3 bg-[#112240] rounded-lg border border-white/5 cursor-pointer"
                   >
                     <Award className="w-4 h-4 text-[#D4A843] flex-shrink-0" />
-                    <span className="text-white/70 text-sm">{cert}</span>
+                    <button className="text-white/70 text-sm">{cert.title}</button>
                   </motion.div>
+                ))}
+              </div>
+            )} */}
+            {activeTab === "Standar Keselamatan" && (
+              <div className="space-y-4">
+
+                {/* <p className="text-white/50 text-sm leading-relaxed">
+                  Unduh dokumen atau gambar standar keselamatan yang digunakan
+                  PT. Jemla Ferry sebagai pedoman operasional pelayaran.
+                </p> */}
+
+                {certs.map((cert, i) => (
+                  <motion.a
+                    key={cert.title}
+                    href={cert.file}
+                    download
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.1 }}
+                    whileHover={{
+                      y: -4,
+                    }}
+                    whileTap={{
+                      scale: 0.98,
+                    }}
+                    className="
+          group
+          relative
+          overflow-hidden
+          flex
+          items-center
+          justify-between
+          gap-4
+          p-5
+          rounded-2xl
+          bg-[#112240]
+          border
+          border-white/5
+          hover:border-[#D4A843]/40
+          transition-all
+          duration-300
+        "
+                  >
+                    {/* Glow */}
+                    <div
+                      className="
+            absolute inset-0
+            bg-gradient-to-r
+            from-[#D4A843]/0
+            via-[#D4A843]/5
+            to-[#1E6FBF]/5
+            opacity-0
+            group-hover:opacity-100
+            transition-opacity
+            duration-500
+          "
+                    />
+
+                    <div className="relative flex items-center gap-4">
+
+                      <div
+                        className="
+              w-12 h-12
+              rounded-xl
+              bg-[#D4A843]/10
+              border border-[#D4A843]/20
+              flex items-center justify-center
+            "
+                      >
+                        <Award className="w-5 h-5 text-[#D4A843]" />
+                      </div>
+
+                      <div>
+                        <h4 className="text-white font-medium">
+                          {cert.title}
+                        </h4>
+
+                        <p className="text-white/40 text-xs mt-1">
+                          Klik untuk mengunduh file
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="relative flex items-center gap-3">
+
+                      <div
+                        className="
+              flex items-center gap-2
+              px-3 py-2
+              rounded-xl
+              bg-[#1E6FBF]/10
+              border border-[#1E6FBF]/20
+            "
+                      >
+                        <Download className="w-4 h-4 text-[#7BB8FF]" />
+
+                        <span className="text-[#7BB8FF] text-xs font-medium">
+                          Download
+                        </span>
+                      </div>
+
+                      <ArrowRight
+                        className="
+              w-4 h-4
+              text-white/40
+              transition-transform
+              duration-300
+              group-hover:translate-x-1
+            "
+                      />
+                    </div>
+                  </motion.a>
                 ))}
               </div>
             )}

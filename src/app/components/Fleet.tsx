@@ -8,6 +8,7 @@ const FLEET_IMG_3 = "/image/kapaldutabanten.jpg";
 const FLEET_IMG_4 = "/image/kapaljagantara.jpg";
 const FLEET_IMG_5 = "/image/kapalvirgo.jpg";
 const FLEET_IMG_6 = "/image/kapalathaya.jpg";
+const FLEET_IMG_7 = "/image/kapalputriyasmin.jpg";
 
 const fleet = [
   // shanaya
@@ -108,7 +109,6 @@ const fleet = [
     route: "Merak – Bakauheni",
     status: "Beroperasi",
   },
-
   // Athaya 
   {
     name: "KMP. Athaya",
@@ -123,6 +123,166 @@ const fleet = [
     route: "Merak – Bakauheni",
     status: "Beroperasi",
   },
+  // Gilimanuk  I
+  {
+    name: "KMP. Gilimanuk I",
+    type: "Ro - Ro Passenger Ship",
+    image: "",
+    kendaraan: "27 Unit Campuran",
+    teus: "159 Penumpang",
+    length: "41.44 M",
+    built: "1965",
+    flag: "Indonesia",
+    class: "BKI ",
+    route: "Ketapang – Gilimanuk",
+    status: "Beroperasi",
+  },
+  // Gilimanuk II
+  {
+    name: "KMP. Gilimanuk II",
+    type: "Ro - Ro Passenger Ship",
+    image: "",
+    kendaraan: "24 Unit Campuran",
+    teus: "271 Penumpang",
+    length: "44.30 M",
+    built: "1990/1991",
+    flag: "Indonesia",
+    class: "BKI ",
+    route: "Ketapang – Gilimanuk",
+    status: "Beroperasi",
+  },
+
+  // Mishima
+  {
+    name: "KMP. Mishima",
+    type: "Ro - Ro Passenger Ship",
+    image: "",
+    kendaraan: "30 Unit Campuran",
+    teus: "305 Penumpang",
+    length: "56.65 M",
+    built: "1982",
+    flag: "Indonesia",
+    class: "BKI ",
+    route: "Bajoe – Kolaka",
+    status: "Beroperasi",
+  },
+  // Kotabumi
+  {
+    name: "KMP. Kotabumi",
+    type: "Ro - Ro Passenger Ship",
+    image: "",
+    kendaraan: "37 Unit Campuran",
+    teus: "374 Penumpang",
+    length: "71.57 M",
+    built: "1968",
+    flag: "Indonesia",
+    class: "BKI ",
+    route: "Bajoe – Kolaka",
+    status: "Beroperasi",
+  },
+  // Masagena
+  {
+    name: "KMP. Masagena",
+    type: "Ro - Ro Passenger Ship",
+    image: "",
+    kendaraan: "28 Unit Campuran",
+    teus: "345 Penumpang",
+    length: "71.83 M",
+    built: "1988",
+    flag: "Indonesia",
+    class: "BKI ",
+    route: "Bajoe – Kolaka",
+    status: "Beroperasi",
+  },
+  // Jemla Fajar
+  {
+    name: "KMP. Jemla Fajar",
+    type: "Ro - Ro Passenger Ship",
+    image: "",
+    kendaraan: "22 Unit Campuran",
+    teus: "244 Penumpang",
+    length: "44.40 M",
+    built: "1985",
+    flag: "Indonesia",
+    class: "BKI ",
+    route: "Kayangan – Pototano",
+    status: "Beroperasi",
+  },
+  // Putri Gianyar
+  {
+    name: "KMP. Putri Gianyar",
+    type: "Ro - Ro Passenger Ship",
+    image: "",
+    kendaraan: "36 Unit Campuran",
+    teus: "300 Penumpang",
+    length: "62.16 M",
+    built: "1984",
+    flag: "Indonesia",
+    class: "BKI ",
+    route: "Kayangan – Pototano",
+    status: "Beroperasi",
+  },
+  // Putri Yasmin
+  {
+    name: "KMP. Putri Yasmin",
+    type: "Ro - Ro Passenger Ship",
+    image: FLEET_IMG_7,
+    kendaraan: "26 Unit Campuran",
+    teus: "215 Penumpang",
+    length: "60.00 M",
+    built: "1991",
+    flag: "Indonesia",
+    class: "BKI ",
+    route: "Lembar – Padang Bai",
+    status: "Beroperasi",
+  },
+  // Naraya
+  {
+    name: "KMP. Naraya",
+    type: "Ro - Ro Passenger Ship",
+    image: "",
+    kendaraan: "38 Unit Campuran",
+    teus: "345 Penumpang",
+    length: "73.90 M",
+    built: "1995",
+    flag: "Indonesia",
+    class: "BKI ",
+    route: "Lembar – Padang Bai",
+    status: "Beroperasi",
+  },
+  // Parama Kalyani
+  {
+    name: "KMP. Parama Kalyani",
+    type: "Ro - Ro Passenger Ship",
+    image: "",
+    kendaraan: "38 Unit Campuran",
+    teus: "300 Penumpang",
+    length: "76.00 M",
+    built: "2018",
+    flag: "Indonesia",
+    class: "BKI ",
+    route: "Lembar – Padang Bai",
+    status: "Beroperasi",
+  },
+  // athayana
+  {
+    name: "KMP. Athayana",
+    type: "Ro - Ro Passenger Ship",
+    image: "",
+    kendaraan: "35 Unit Campuran",
+    teus: "414 Penumpang",
+    length: "85.00 M",
+    built: "2021",
+    flag: "Indonesia",
+    class: "BKI ",
+    route: "Lembar – Padang Bai",
+    status: "Beroperasi",
+  },
+
+
+
+
+
 
 
 ];

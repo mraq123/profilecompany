@@ -10,8 +10,8 @@ const navLinks = [
   { label: "Rute", href: "#routes" },
   { label: "Kapal & Fasilitas", href: "#facilities" },
   // link ke jemla
-  { label: "Login", href: "" },
   { label: "Jadwal", href: "" },
+  { label: "Login", href: "" },
   // end
   { label: "Kontak", href: "#contact" },
 

@@ -1,113 +1,142 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useInView } from "motion/react";
-import { ExternalLink, Calendar, MapPin } from "lucide-react";
 
-const PROJ_IMG_1 = "/image/shanaya3.png";
-const PROJ_IMG_2 = "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?w=700&h=450&fit=crop&auto=format";
-const PROJ_IMG_3 = "https://images.unsplash.com/photo-1606964212858-c215029db704?w=700&h=450&fit=crop&auto=format";
-const PROJ_IMG_4 = "https://images.unsplash.com/photo-1724597500306-a4cbb7d1324e?w=700&h=450&fit=crop&auto=format";
-
-const projects = [
+const ships = [
   {
-    title: "Fasilitas KMP. Shanaya",
-    category: "KMP. Shanaya",
-    // client: "PT Waskita Karya (Persero) Tbk",
-    // volume: "18.500 ton baja struktural",
-    // period: "Mar 2023 – Sep 2023",
-    // location: "Batam, Kepulauan Riau",
-    image: PROJ_IMG_1,
-    highlight: true,
+    id: 1,
+    name: "KMP. Shanaya",
+    image: "/image/shanaya3.png",
+    status: "Beroperasi",
+    facilities: [
+      "/image/shanaya3.png",
+      "/image/shanaya3.png",
+      "/image/shanaya3.png",
+      "/image/shanaya3.png",
+      "/image/shanaya3.png",
+      "/image/shanaya3.png",
+      "/image/shanaya3.png",
+      "/image/shanaya3.png",
+    ],
+  },
+  {
+    id: 2,
+    name: "KMP. Jemla 01",
+    image: "/image/shanaya3.png",
+    status: "Beroperasi",
+    facilities: [
+      "/image/shanaya3.png",
+      "/image/shanaya3.png",
+    ],
+  },
+  {
+    id: 3,
+    name: "KMP. Jemla 02",
+    image: "/image/shanaya3.png",
+    status: "Beroperasi",
+    facilities: [
+      "/image/shanaya3.png",
+      "/image/shanaya3.png",
+    ],
+  },
+  {
+    id: 4,
+    name: "KMP. Jemla 03",
+    image: "/image/shanaya3.png",
+    status: "Beroperasi",
+    facilities: [
+      "/image/shanaya3.png",
+      "/image/shanaya3.png",
+    ],
+  },
+  {
+    id: 5,
+    name: "KMP. Jemla 04",
+    image: "/image/shanaya3.png",
+    status: "Beroperasi",
+    facilities: [
+      "/image/shanaya3.png",
+      "/image/shanaya3.png",
+    ],
   },
 
   {
-    title: "Fasilitas KMP. Shanaya",
-    category: "KMP. Shanaya",
-    // client: "PT Waskita Karya (Persero) Tbk",
-    // volume: "18.500 ton baja struktural",
-    // period: "Mar 2023 – Sep 2023",
-    // location: "Batam, Kepulauan Riau",
-    image: PROJ_IMG_1,
-    highlight: true,
+    id: 6,
+    name: "KMP. Jemla 05",
+    image: "/image/shanaya3.png",
+    status: "Beroperasi",
+    facilities: [
+      "/image/shanaya3.png",
+      "/image/shanaya3.png",
+    ],
   },
 
   {
-    title: "Fasilitas KMP. Shanaya",
-    category: "KMP. Shanaya",
-    // client: "PT Waskita Karya (Persero) Tbk",
-    // volume: "18.500 ton baja struktural",
-    // period: "Mar 2023 – Sep 2023",
-    // location: "Batam, Kepulauan Riau",
-    image: PROJ_IMG_1,
-    highlight: true,
+    id: 7,
+    name: "KMP. Jemla 06",
+    image: "/image/shanaya3.png",
+    status: "Beroperasi",
+    facilities: [
+      "/image/shanaya3.png",
+      "/image/shanaya3.png",
+    ],
   },
 
   {
-    title: "Fasilitas KMP. Shanaya",
-    category: "KMP. Shanaya",
-    // client: "PT Waskita Karya (Persero) Tbk",
-    // volume: "18.500 ton baja struktural",
-    // period: "Mar 2023 – Sep 2023",
-    // location: "Batam, Kepulauan Riau",
-    image: PROJ_IMG_1,
-    highlight: true,
+    id: 8,
+    name: "KMP. Jemla 07",
+    image: "/image/shanaya3.png",
+    status: "Beroperasi",
+    facilities: [
+      "/image/shanaya3.png",
+      "/image/shanaya3.png",
+    ],
   },
-
   {
-    title: "Fasilitas KMP. Shanaya",
-    category: "KMP. Shanaya",
-    // client: "PT Waskita Karya (Persero) Tbk",
-    // volume: "18.500 ton baja struktural",
-    // period: "Mar 2023 – Sep 2023",
-    // location: "Batam, Kepulauan Riau",
-    image: PROJ_IMG_1,
-    highlight: true,
+    id: 9,
+    name: "KMP. Jemla 08",
+    image: "/image/shanaya3.png",
+    status: "Beroperasi",
+    facilities: [
+      "/image/shanaya3.png",
+      "/image/shanaya3.png",
+    ],
   },
-  // {
-  //   title: "Distribusi Logistik Proyek PLTU Sulawesi Selatan",
-  //   category: "Logistik Industri",
-  //   client: "PLN Nusantara Power",
-  //   volume: "42.000 ton peralatan & material",
-  //   period: "Jan 2022 – Okt 2023",
-  //   location: "Jeneponto, Sulawesi Selatan",
-  //   image: PROJ_IMG_2,
-  //   highlight: true,
-  // },
-  // {
-  //   title: "Charter Armada Ekspor CPO Kalimantan Timur",
-  //   category: "Charter & Bulk",
-  //   client: "PT Astra Agro Lestari Tbk",
-  //   volume: "7 voyage charter, 280.000 ton",
-  //   period: "Feb 2023 – Feb 2024",
-  //   location: "Samarinda, Kalimantan Timur",
-  //   image: PROJ_IMG_3,
-  //   highlight: false,
-  // },
-  // {
-  //   title: "Pengiriman Peralatan Migas Offshore Natuna",
-  //   category: "Oil & Gas Support",
-  //   client: "PT Pertamina Hulu Energi",
-  //   volume: "12 rig equipment package",
-  //   period: "Apr 2024 – Des 2024",
-  //   location: "Kepulauan Natuna",
-  //   image: PROJ_IMG_4,
-  //   highlight: false,
-  // },
+  {
+    id: 10,
+    name: "KMP. Jemla 09",
+    image: "/image/shanaya3.png",
+    status: "Beroperasi",
+    facilities: [
+      "/image/shanaya3.png",
+      "/image/shanaya3.png",
+    ],
+  },
 ];
 
-const stats = [
-  { value: "500+", label: "Proyek Selesai" },
-  { value: "2.8 Jt", label: "Ton Muatan/Tahun" },
-  { value: "98.7%", label: "On-Time Rate" },
-  { value: "0", label: "Insiden Utama" },
-];
 
 export function Projects() {
+  const [showAll, setShowAll] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [selectedShip, setSelectedShip] = useState<any>(null);
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const displayedShips = showAll
+    ? ships
+    : ships.slice(0, 8);
 
+  const handleSelectShip = (ship: any) => {
+    setSelectedShip(ship);
+
+    setTimeout(() => {
+      contentRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 100);
+  };
   return (
     <section id="facilities" className="py-28 bg-[#0B1829]" ref={ref}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8" ref={contentRef}>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -122,104 +151,172 @@ export function Projects() {
             </span>
           </div>
           <div className="grid lg:grid-cols-2 gap-8 items-end">
-            <h2 className="text-white">Rekam Jejak Pengiriman Terbaik</h2>
-            <p className="text-white/50 leading-relaxed">
-              Lebih dari 500 proyek sukses bersama klien terkemuka dari berbagai sektor
-              industri — energi, konstruksi, pertambangan, dan perkebunan.
-            </p>
+            <h2 className="text-white">Kapal & Fasilitas</h2>
           </div>
         </motion.div>
 
-        {/* Stats bar */}
-        {/* <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 rounded-2xl overflow-hidden mb-12"
-        >
-          {stats.map((s) => (
-            <div key={s.label} className="bg-[#112240] px-8 py-6 text-center">
-              <div
-                className="text-[#D4A843] mb-1"
-                style={{ fontFamily: "'Libre Caslon Display', serif", fontSize: "2rem" }}
-              >
-                {s.value}
-              </div>
-              <div className="text-white/40 text-sm">{s.label}</div>
+
+        {!selectedShip ? (
+          <>
+            {/* LIST KAPAL */}
+            <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+              {displayedShips.map((ship, i) => (
+                <motion.div
+                  key={ship.id}
+                  // onClick={() => setSelectedShip(ship)}
+                  onClick={() => handleSelectShip(ship)}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: i * 0.08 }}
+                  whileHover={{ y: -6 }}
+                  className="
+                  cursor-pointer
+                  overflow-hidden
+                  rounded-2xl
+                  bg-[#112240]
+                  border border-white/5
+                  hover:border-[#D4A843]/40
+                  transition-all
+                "
+                >
+                  <div className="h-52 overflow-hidden">
+                    {ship.image ? (
+                      <img
+                        src={ship.image}
+                        alt={ship.name}
+                        className="
+                      w-full
+                      h-full
+                      object-cover
+                      transition-transform
+                      duration-500
+                      hover:scale-105
+                    "
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-[#112240]">
+                        <h1 className="text-[#D4A843] text-center pt-20">Foto Belum Tersedia</h1>
+                      </div>
+                    )}
+
+                  </div>
+
+                  <div className="p-5">
+                    <h3 className="text-white font-semibold">
+                      {ship.name}
+                    </h3>
+
+                    <p className="text-[#D4A843] text-sm mt-1">
+                      Klik untuk melihat fasilitas
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
-          ))}
-        </motion.div> */}
 
-        {/* Project cards */}
-        <div className="grid md:grid-cols-2 gap-6">
-          {projects.map((proj, i) => (
-            <motion.div
-              key={proj.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className={`group relative rounded-2xl overflow-hidden bg-[#112240] border transition-all duration-300 hover:border-[#1E6FBF]/50 ${proj.highlight ? "border-[#D4A843]/30" : "border-white/5"
-                }`}
-            >
-              {proj.highlight && (
-                <div className="absolute top-4 left-4 z-10 px-3 py-1 bg-[#D4A843] text-[#0B1829] text-xs font-bold rounded-full">
-                  Beroperasi
-                </div>
-              )}
-              <div className="relative h-52 bg-[#1A3A5C] overflow-hidden">
-                <img
-                  src={proj.image}
-                  alt={proj.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-70"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#112240] via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4">
-                  <span className="px-3 py-1 bg-[#1E6FBF]/80 text-white text-xs rounded-full">
-                    {proj.category}
+            {ships.length > 8 && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={inView ? { opacity: 1 } : {}}
+                transition={{ delay: 0.5 }}
+                className="flex justify-center mt-10"
+              >
+                <button
+                  onClick={() => setShowAll(!showAll)}
+                  className="
+                  group
+                  px-8 py-4
+                  rounded-2xl
+                  bg-[#112240]
+                  border border-white/10
+                  hover:border-[#D4A843]/40
+                  text-white
+                  transition-all duration-300
+                  hover:-translate-y-1
+                "
+                >
+                  <span className="flex items-center gap-2">
+                    {showAll ? "Tampilkan Lebih Sedikit" : "Lihat Semua Kapal"}
+
+                    <span
+                      className={`
+                      transition-transform duration-300
+                      ${showAll ? "rotate-180" : ""}
+                    `}
+                    >
+                      ↓
+                    </span>
                   </span>
-                </div>
-              </div>
+                </button>
+              </motion.div>
+            )}
+          </>
+        ) : (
+          <motion.div
+            key={selectedShip.id}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            {/* HEADER */}
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-10">
 
-              <div className="p-6">
-                <h3 className="text-white mb-3 group-hover:text-[#D4A843] transition-colors" style={{ fontSize: "1rem" }}>
-                  {proj.title}
+              <div>
+                <h3 className="text-white text-3xl font-semibold">
+                  {selectedShip.name}
                 </h3>
-                {/* <p className="text-[#1E6FBF] text-sm font-medium mb-4">{proj.client}</p> */}
 
-                {/* <div className="space-y-2 mb-4">
-                  <div className="flex items-center gap-2 text-white/40 text-xs">
-                    <Package className="w-3.5 h-3.5" />
-                    {proj.volume}
-                  </div>
-                  <div className="flex items-center gap-2 text-white/40 text-xs">
-                    <Calendar className="w-3.5 h-3.5" />
-                    {proj.period}
-                  </div>
-                  <div className="flex items-center gap-2 text-white/40 text-xs">
-                    <MapPin className="w-3.5 h-3.5" />
-                    {proj.location}
-                  </div>
-                </div> */}
-
-                <div className="flex items-center gap-1 text-white/20 group-hover:text-[#1E6FBF] text-sm transition-colors">
-                  <span>Lihat detail</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </div>
+                <p className="text-white/50 mt-2">
+                  Fasilitas Kapal
+                </p>
               </div>
-            </motion.div>
-          ))}
-        </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-10 text-center"
-        >
-          <button className="px-8 py-4 border border-white/15 hover:border-[#D4A843]/50 text-white/60 hover:text-white text-sm rounded-xl transition-all duration-200">
-            Lihat Semua Proyek
-          </button>
-        </motion.div>
+              <button
+                onClick={() => setSelectedShip(null)}
+                className="
+                px-5 py-3
+                rounded-xl
+                bg-[#112240]
+                border border-white/10
+                hover:border-[#D4A843]/40
+                text-white
+                transition-all
+              "
+              >
+                ← Kembali ke Daftar Kapal
+              </button>
+            </div>
+
+            {/* GALERI */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {selectedShip.facilities.map((img: string, idx: number) => (
+                <motion.div
+                  key={idx}
+                  whileHover={{
+                    scale: 1.02,
+                  }}
+                  className="
+                  overflow-hidden
+                  rounded-2xl
+                  bg-[#112240]
+                  border border-white/5
+                "
+                >
+                  <img
+                    src={img}
+                    alt=""
+                    className="
+                    w-full
+                    h-72
+                    object-cover
+                  "
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+
       </div>
     </section>
   );

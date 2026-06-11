@@ -25,8 +25,8 @@ export default function App() {
         <Fleet />
         <Routes />
         <Projects />
-        <News />
-        <Partners />
+        {/* <News /> */}
+        {/* <Partners /> */}
         <Contact />
       </main>
       <Footer />

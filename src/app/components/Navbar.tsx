@@ -10,8 +10,8 @@ const navLinks = [
   { label: "Rute", href: "#routes" },
   { label: "Kapal & Fasilitas", href: "#facilities" },
   // link ke jemla
-  { label: "Jadwal", href: "" },
-  { label: "Login", href: "" },
+  { label: "Jadwal", href: "https://jadwal.jemlaferry.com/jadwal.php?cabang=12" },
+  { label: "Login", href: "https://jemlaferry.com/internalsbaru/index.php?isi=inside" },
   // end
   { label: "Kontak", href: "#contact" },
 
@@ -39,13 +39,32 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // const handleNav = (href: string) => {
+  //   setMobileOpen(false);
+  //   const id = href.replace("#", "");
+  //   const el = document.getElementById(id);
+  //   if (el) el.scrollIntoView({ behavior: "smooth" });
+  // };
+
   const handleNav = (href: string) => {
     setMobileOpen(false);
+
+    // external link
+    if (href.startsWith("http")) {
+      window.open(href, "_blank", "noopener,noreferrer");
+      return;
+    }
+
+    // internal section
     const id = href.replace("#", "");
     const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
 
+    if (el) {
+      el.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  };
   return (
     <>
       <motion.nav

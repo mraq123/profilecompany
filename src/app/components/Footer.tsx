@@ -1,16 +1,54 @@
 import { Anchor, Mail, Phone, MapPin, ChevronRight } from "lucide-react";
+import { ImageWithFallback } from "./figma/ImageWithFallback";
 
-const footerLinks = {
-  Perusahaan: ["Tentang Kami", "Visi & Misi", "Nilai Perusahaan", "Sertifikasi", "Karir"],
-  Layanan: ["Pengiriman Kargo", "Charter Kapal", "Logistik & Distribusi", "Freight Forwarding", "Bongkar Muat"],
-  Informasi: ["Berita & Artikel", "Proyek & Portofolio", "Rute & Jaringan", "Armada Kapal", "FAQ"],
-};
+
 
 export function Footer() {
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+
+
+  const footerLinks = {
+    Perusahaan: [
+      { label: "Beranda", href: "#home" },
+      { label: "Tentang", href: "#about" },
+    ],
+    Layanan: [
+      { label: "Layanan", href: "#services" },
+      { label: "Armada", href: "#fleet" },
+      { label: "Rute", href: "#routes" },
+    ],
+    Informasi: [
+      { label: "Kapal & Fasilitas", href: "#facilities" },
+      { label: "Kontak", href: "#contact" },
+      {
+        label: "Jadwal",
+        href: "https://jadwal.jemlaferry.com/jadwal.php?cabang=12",
+      },
+      {
+        label: "Login",
+        href: "https://jemlaferry.com/internalsbaru/index.php?isi=inside",
+      },
+    ],
   };
+
+
+  const handleFooterLink = (href: string) => {
+    // external link
+    if (href.startsWith("http")) {
+      window.open(href, "_blank", "noopener,noreferrer");
+      return;
+    }
+
+    // internal section
+    const id = href.replace("#", "");
+    const el = document.getElementById(id);
+
+    if (el) {
+      el.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  };
+
 
   return (
     <footer className="bg-[#060F1D] border-t border-white/5">
@@ -19,8 +57,13 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-[#D4A843] rounded-full flex items-center justify-center">
-                <Anchor className="w-5 h-5 text-[#0B1829]" strokeWidth={2.5} />
+              <div className="w-8 h-8 rounded-full overflow-hidden bg-[white] flex items-center justify-center">
+                <ImageWithFallback
+                  src="/image/logoori.jpeg"
+                  alt="Logo"
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: "39% 50%" }}
+                />
               </div>
               <div className="flex flex-col leading-none">
                 <span
@@ -31,13 +74,13 @@ export function Footer() {
                     fontWeight: 700,
                   }}
                 >
-                  SAMUDERA
+                  Jemla Ferry
                 </span>
                 <span
                   className="text-[#D4A843] tracking-[0.3em]"
                   style={{ fontSize: "0.6rem", fontFamily: "'DM Sans', sans-serif", fontWeight: 500 }}
                 >
-                  NUSANTARA LINE
+                  Ferry Service
                 </span>
               </div>
             </div>
@@ -48,15 +91,15 @@ export function Footer() {
             <div className="space-y-3">
               <div className="flex items-start gap-3 text-sm text-white/40">
                 <MapPin className="w-4 h-4 text-[#D4A843] flex-shrink-0 mt-0.5" />
-                <span>Jl. Perak Barat No. 97, Surabaya 60177</span>
+                <span>Jl. Wolter Monginsidi No.91 1, RT.1/RW.4, Rw. Bar., Kec. Kby. Baru, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12170</span>
               </div>
               <div className="flex items-center gap-3 text-sm text-white/40">
                 <Phone className="w-4 h-4 text-[#D4A843] flex-shrink-0" />
-                <span>+62 31 3294 5500</span>
+                <span>(021) 7266777</span>
               </div>
               <div className="flex items-center gap-3 text-sm text-white/40">
                 <Mail className="w-4 h-4 text-[#D4A843] flex-shrink-0" />
-                <span>info@samuderanusantara.co.id</span>
+                <span>-</span>
               </div>
             </div>
           </div>
@@ -66,16 +109,31 @@ export function Footer() {
             <div key={category}>
               <h4
                 className="text-white mb-5"
-                style={{ fontSize: "0.85rem", letterSpacing: "0.05em", textTransform: "uppercase" }}
+                style={{ fontSize: "0.85rem", letterSpacing: "0.05rem", textTransform: "uppercase" }}
               >
                 {category}
               </h4>
               <ul className="space-y-3">
                 {links.map((link) => (
-                  <li key={link}>
-                    <button className="flex items-center gap-1.5 text-white/40 hover:text-white text-sm transition-colors group">
-                      <ChevronRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      {link}
+                  <li key={link.label}>
+                    <button
+                      onClick={() => handleFooterLink(link.href)}
+                      className="
+                      flex items-center gap-1.5
+                      text-white/40 hover:text-white
+                      text-sm transition-colors group
+                    "
+                    >
+                      <ChevronRight
+                        className="
+                        w-3 h-3
+                        opacity-0
+                        group-hover:opacity-100
+                        transition-opacity
+                      "
+                      />
+
+                      {link.label}
                     </button>
                   </li>
                 ))}
@@ -85,7 +143,7 @@ export function Footer() {
         </div>
 
         {/* Newsletter */}
-        <div className="border-t border-white/5 pt-10 pb-10 grid lg:grid-cols-2 gap-8 items-center">
+        {/* <div className="border-t border-white/5 pt-10 pb-10 grid lg:grid-cols-2 gap-8 items-center">
           <div>
             <h4 className="text-white mb-2">Berlangganan Newsletter</h4>
             <p className="text-white/40 text-sm">
@@ -102,20 +160,20 @@ export function Footer() {
               Berlangganan
             </button>
           </div>
-        </div>
+        </div> */}
 
         {/* Bottom bar */}
         <div className="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-white/25 text-xs">
-            © 2025 PT Samudera Nusantara Line. Seluruh hak cipta dilindungi.
+            © 2026 PT Jemla Ferry. Seluruh hak cipta dilindungi.
           </p>
-          <div className="flex gap-6">
+          {/* <div className="flex gap-6">
             {["Kebijakan Privasi", "Syarat & Ketentuan", "Sitemap"].map((link) => (
               <button key={link} className="text-white/25 hover:text-white/50 text-xs transition-colors">
                 {link}
               </button>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

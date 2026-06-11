@@ -5,18 +5,18 @@ import { Mail, Phone, MapPin, Send, Facebook, Instagram, Linkedin, Youtube } fro
 const offices = [
   {
     label: "Kantor Pusat",
-    address: "Jl. Perak Barat No. 97, Surabaya 60177, Jawa Timur",
-    phone: "+62 31 3294 5500",
-    email: "info@samuderanusantara.co.id",
-    hours: "Senin–Jumat, 08.00–17.00 WIB",
+    address: "Jl. Wolter Monginsidi No.91 1, RT.1/RW.4, Rw. Bar., Kec. Kby. Baru, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12170",
+    phone: "(021) 7266777",
+    email: "-",
+    hours: "Senin–Jumat, 08.30–16.30 WIB",
   },
-  {
-    label: "Kantor Jakarta",
-    address: "Gedung Maritim Plaza Lt. 12, Jl. Tanjung Priok No. 1, Jakarta Utara 14310",
-    phone: "+62 21 4301 8800",
-    email: "jakarta@samuderanusantara.co.id",
-    hours: "Senin–Jumat, 08.00–17.00 WIB",
-  },
+  // {
+  //   label: "Kantor Jakarta",
+  //   address: "Gedung Maritim Plaza Lt. 12, Jl. Tanjung Priok No. 1, Jakarta Utara 14310",
+  //   phone: "+62 21 4301 8800",
+  //   email: "jakarta@samuderanusantara.co.id",
+  //   hours: "Senin–Jumat, 08.00–17.00 WIB",
+  // },
 ];
 
 export function Contact() {
@@ -53,10 +53,9 @@ export function Contact() {
             </span>
           </div>
           <div className="grid lg:grid-cols-2 gap-8 items-end">
-            <h2 className="text-white">Siap Membantu Kebutuhan Logistik Anda</h2>
+            <h2 className="text-white">Kami Siap Melayani Perjalanan dan Kebutuhan Transportasi Laut Anda</h2>
             <p className="text-white/50 leading-relaxed">
-              Tim kami siap memberikan konsultasi dan penawaran terbaik untuk
-              kebutuhan pengiriman dan transportasi laut Anda. Hubungi kami sekarang.
+              Tim Jemla Ferry siap membantu Anda memperoleh informasi mengenai jadwal pelayaran, rute perjalanan, tarif tiket, maupun kebutuhan transportasi laut lainnya. Hubungi kami untuk mendapatkan pelayanan yang cepat, aman, dan terpercaya.
             </p>
           </div>
         </motion.div>
@@ -93,7 +92,7 @@ export function Contact() {
                     { name: "name", label: "Nama Lengkap", placeholder: "Budi Santoso", type: "text" },
                     { name: "email", label: "Email", placeholder: "budi@company.com", type: "email" },
                     { name: "phone", label: "Nomor Telepon", placeholder: "+62 812 3456 7890", type: "tel" },
-                    { name: "company", label: "Nama Perusahaan", placeholder: "PT Maju Bersama", type: "text" },
+                    // { name: "company", label: "Nama Perusahaan", placeholder: "PT Maju Bersama", type: "text" },
                   ].map((field) => (
                     <div key={field.name}>
                       <label className="block text-white/50 text-xs mb-2">{field.label}</label>
@@ -108,25 +107,28 @@ export function Contact() {
                       />
                     </div>
                   ))}
+
+                  <div className="mb-4">
+                    <label className="block text-white/50 text-xs mb-2">Keperluan</label>
+                    <select
+                      name="subject"
+                      value={form.subject}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 bg-[#1A3A5C] border border-white/10 rounded-xl text-white focus:outline-none focus:border-[#1E6FBF] transition-colors text-sm appearance-none"
+                    >
+                      <option value="" disabled>Pilih keperluan...</option>
+                      {/* <option value="ticket">Pemesanan Tiket</option> */}
+                      <option value="schedule">Informasi Jadwal Pelayaran</option>
+                      <option value="route">Informasi Rute & Pelabuhan</option>
+                      {/* <option value="group">Perjalanan Rombongan</option> */}
+                      {/* <option value="charter">Sewa Kapal</option> */}
+                      <option value="other">Lainnya</option>
+                    </select>
+                  </div>
+
                 </div>
 
-                <div className="mb-4">
-                  <label className="block text-white/50 text-xs mb-2">Keperluan</label>
-                  <select
-                    name="subject"
-                    value={form.subject}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-[#1A3A5C] border border-white/10 rounded-xl text-white focus:outline-none focus:border-[#1E6FBF] transition-colors text-sm appearance-none"
-                  >
-                    <option value="" disabled>Pilih keperluan...</option>
-                    <option value="cargo">Pengiriman Kargo</option>
-                    <option value="charter">Charter Kapal</option>
-                    <option value="logistics">Logistik & Distribusi</option>
-                    <option value="freight">Freight Forwarding</option>
-                    <option value="other">Lainnya</option>
-                  </select>
-                </div>
 
                 <div className="mb-6">
                   <label className="block text-white/50 text-xs mb-2">Pesan</label>
@@ -195,10 +197,10 @@ export function Contact() {
               </div>
               <div className="grid grid-cols-2 gap-3">
                 {[
-                  { icon: Linkedin, label: "LinkedIn", handle: "@samuderanusantara" },
-                  { icon: Instagram, label: "Instagram", handle: "@snl_shipping" },
-                  { icon: Facebook, label: "Facebook", handle: "Samudera Nusantara" },
-                  { icon: Youtube, label: "YouTube", handle: "SNL Official" },
+                  // { icon: Linkedin, label: "LinkedIn", handle: "@samuderanusantara" },
+                  { icon: Instagram, label: "Instagram", handle: "@jemlaferry" },
+                  // { icon: Facebook, label: "Facebook", handle: "Samudera Nusantara" },
+                  { icon: Youtube, label: "YouTube", handle: "Jemla Ferry" },
                 ].map(({ icon: Icon, label, handle }) => (
                   <button
                     key={label}
@@ -215,7 +217,7 @@ export function Contact() {
             </div>
 
             {/* Emergency contact */}
-            <div className="p-5 bg-[#1E6FBF]/10 border border-[#1E6FBF]/20 rounded-2xl">
+            {/* <div className="p-5 bg-[#1E6FBF]/10 border border-[#1E6FBF]/20 rounded-2xl">
               <div className="text-[#1E6FBF] text-xs font-semibold tracking-wide uppercase mb-2">
                 24/7 Emergency Line
               </div>
@@ -223,7 +225,7 @@ export function Contact() {
               <div className="text-white/40 text-xs mt-1">
                 Hotline darurat kapal & kargo — gratis dari semua operator
               </div>
-            </div>
+            </div> */}
           </motion.div>
         </div>
       </div>

@@ -1,6 +1,8 @@
 import { Anchor, Mail, Phone, MapPin, ChevronRight } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
+// catatan untuk foto kapal dan fasilitas per kapal blm lengkap 
+// kirim pesan masih ui saja
 
 
 export function Footer() {

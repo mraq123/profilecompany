@@ -57,7 +57,7 @@ const regions = [
   { label: "Bali", ports: 2 },
   { label: "Lombok", ports: 2 },
   { label: "Sumbawa", ports: 1 },
-  // { label: "Internasional", ports: 8 },
+  { label: "Sumatra", ports: 1 },
 ];
 
 export function Routes() {
